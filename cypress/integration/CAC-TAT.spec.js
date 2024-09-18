@@ -8,7 +8,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     })
 
     it('verifica o título da aplicação', function() {
-        cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')  
+        cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
     })
 
     it('Preenche os campos obrigatórios e envia o formulário', function(){
@@ -18,7 +18,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#firstName').type('Pedro Paulo')
         cy.get('#lastName').type('Sotero Bhering')
         cy.get('#email').type('teste@teste.com.br')
-        cy.get('#open-text-area').type(longText, { delay : 0})        
+        cy.get('#open-text-area').type(longText, { delay : 0})      
         cy.contains('button', 'Enviar').click()
         cy.get('.success').should('be.visible')
         cy.tick(miliSeconds)
@@ -73,7 +73,6 @@ describe('Central de Atendimento ao Cliente TAT', function() {
           .should('have.value', '1234567890')
           .clear()
           .should('have.value', '')
-
     })
 
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
@@ -116,9 +115,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     it('marca cada tipo de atendimento', function () {
         cy.get('input[type="radio"]')
           .should('have.length', 3)
-          .each(function ($radio) {
-            cy.wrap($radio).check()
-            cy.wrap($radio).should('be.checked')
+          .each(function (radio) {
+            cy.wrap(radio).check()
+            cy.wrap(radio).should('be.checked')
           })
     })
 
@@ -200,7 +199,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
           const {status, statusText, body} = response
           expect(status).to.equal(200)
           expect(statusText).to.equal('OK')
-          expect(body).to.include('CAC TAT')
+          expect(body).to.include('CAC TAT ')
         })
     })
 })
